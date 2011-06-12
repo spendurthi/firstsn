@@ -25,7 +25,7 @@ public class DepartmentTest {
     public static Department addDepartment(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
-        Department dept=new Department(4,"SUPPORT");
+        Department dept=new Department(1,"ADMIN");
         session.save(dept);
         transaction.commit();
         return dept;
@@ -52,19 +52,19 @@ public class DepartmentTest {
         return lDept;
     }
     public static void main(String[] args) {        
-        //addDepartment();
+        addDepartment();
         //viewDepartment(2);
         //viewAll();
         // Update department
         //Department d1=new Department(4,"Customer Service");
         //System.out.println(update(d1));
         // Add employees to a department
-        Department d=viewDepartment(3);
-        for (Iterator iterator = d.getEmployees().iterator(); iterator.hasNext();) {
-            Employee type = (Employee) iterator.next();
-            System.out.println(type);
-            
-        }
+//        Department d=viewDepartment(3);
+//        for (Iterator iterator = d.getEmployees().iterator(); iterator.hasNext();) {
+//            Employee type = (Employee) iterator.next();
+//            System.out.println(type);
+//            
+//        }
     }
     
 
