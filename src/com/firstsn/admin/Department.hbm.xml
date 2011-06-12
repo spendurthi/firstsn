@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="com.firstsn.admin.Department" table="DEPARTMENT">
         <id name="deptId" type="int" column="DEPT_ID">
-            <generator class="native" />
+            <generator class="increment" />
         </id>
         <property name="deptName" type="string" not-null="true" length="30" column="DEPT_NAME" />
         <set name="employees" inverse="true" cascade="save-update">
