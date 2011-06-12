@@ -14,7 +14,7 @@ public class EmployeeTest {
     public static void main(String[] args) {
         // Add employee
         DepartmentTest.viewDepartment(3);
-        Employee e1=new Employee("Ram", DepartmentTest.viewDepartment(3));
+        Employee e1=new Employee("Surya", DepartmentTest.viewDepartment(1));
         addEmployee(e1);
 
     }
