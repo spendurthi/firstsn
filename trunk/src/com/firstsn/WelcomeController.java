@@ -10,16 +10,13 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-public class HelloController extends AbstractController {
+public class WelcomeController extends AbstractController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	@Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        logger.info("Returning hello view");
-
-        return new ModelAndView("hello.jsp");
+        return new ModelAndView("welcome");
     }
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
