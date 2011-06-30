@@ -8,12 +8,12 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
-import com.firstsn.admin.Department;
-import com.firstsn.admin.Employee;
 import com.firstsn.admin.util.HibernateUtil;
+import com.firstsn.admin.vo.Department;
+import com.firstsn.admin.vo.Employee;
 
 public class DepartmentTest {
-    public static void addEmployees(Set<com.firstsn.admin.Employee> empList,int deptNo){
+    public static void addEmployees(Set<com.firstsn.admin.vo.Employee> empList,int deptNo){
         Session session = com.firstsn.admin.util.HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
         Department dept=viewDepartment(deptNo);    

@@ -6,8 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
-import com.firstsn.admin.Employee;
 import com.firstsn.admin.util.HibernateUtil;
+import com.firstsn.admin.vo.Employee;
 
 public class EmployeeTest {
 
