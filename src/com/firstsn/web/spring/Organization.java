@@ -3,10 +3,9 @@ package com.firstsn.web.spring;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.portlet.mvc.SimpleFormController;
 import org.springframework.web.servlet.ModelAndView;
 
-public class Organization extends SimpleFormController  {
+public class Organization extends org.springframework.web.servlet.mvc.SimpleFormController  {
 	private com.firstsn.admin.vo.Organization org;
 	public com.firstsn.admin.vo.Organization getOrg() {
 		return org;
