@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/layout/layout.jsp">
+      <put-attribute name="title"  value="StandOne"/>
+      <put-attribute name="header" value="/layout/header.jsp"/>
+      <put-attribute name="menu"   value="/layout/menu.jsp"/>
+      <put-attribute name="body"   value="/layout/body.jsp"/>
+      <put-attribute name="footer"   value="/layout/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome to StandOne"/>
+      <put-attribute name="body"   value="/jsp/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="organization" extends="baseLayout">
+      <put-attribute name="title"  value="Organization"/>
+      <put-attribute name="body"   value="/jsp/organization/organization.jsp"/>      
+  </definition>
+  <definition name="department" extends="baseLayout">
+      <put-attribute name="title"  value="Departments"/>
+      <put-attribute name="body"   value="/jsp/department/departments.jsp"/>      
+  </definition>
+  
+</tiles-definitions>
