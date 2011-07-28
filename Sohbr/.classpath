@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/asm.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/hsqldb.jar"/>
+	<classpathentry kind="lib" path="/StandOne/lib-hiber/jta.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
