@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="StandOne">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <dependent-module archiveName="Sospr.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Sospr/Sospr">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Sohbr.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Sohbr/Sohbr">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="StandOne"/>
+        <property name="java-output-path" value="/StandOne/build/classes"/>
+    </wb-module>
+</project-modules>

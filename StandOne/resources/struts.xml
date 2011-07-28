@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+		<action name="organization" method="saveOrganization" class="com.firstsn.web.struts.Organization">
+			<result name="success" type="redirect">listOranization</result>
+		</action>
+		<action name="listOranization" method="select" class="com.firstsn.web.struts.Organization">
+			<result name="success">/organization.jsp</result>
+		</action>
+	</package>
+</struts>
