@@ -7,7 +7,6 @@ function setMode(id,mode){
 	document.frmDept.submit();
 }
 function customButton(mode){
-	alert(mode);
 	document.frmDept.action="department.htm?methodName="+mode;
 	document.frmDept.submit();
 }
