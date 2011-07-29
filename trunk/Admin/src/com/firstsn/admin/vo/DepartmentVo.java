@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.firstsn.admin.parents.ValueObject;
 
-public class Department extends ValueObject {
+public class DepartmentVo extends ValueObject {
     private int deptId;
     private String deptName;
     private Set<Employee> employees=new HashSet<Employee>(); 
@@ -21,14 +21,14 @@ public class Department extends ValueObject {
     public int getDeptId() {
         return deptId;
     }
-    public Department(){
+    public DepartmentVo(){
         
     }
-    public Department(String deptName) {
+    public DepartmentVo(String deptName) {
         super();
         this.deptName = deptName;
     }
-    public Department(int deptId, String deptName) {
+    public DepartmentVo(int deptId, String deptName) {
         super();
         this.deptId = deptId;
         this.deptName = deptName;

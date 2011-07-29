@@ -5,19 +5,19 @@ import com.firstsn.admin.parents.ValueObject;
 public class Employee extends ValueObject{
     private int empId;
     private String empName;
-    private Department deptId;
+    private DepartmentVo deptId;
     public int getEmpId() {
         return empId;
     }
     public Employee() {
         super();
     }
-    public Employee(String empName, Department deptId) {
+    public Employee(String empName, DepartmentVo deptId) {
         super();
         this.empName = empName;
         this.deptId = deptId;
     }
-    public Employee(int empId, String empName, Department deptId) {
+    public Employee(int empId, String empName, DepartmentVo deptId) {
         super();
         this.empId = empId;
         this.empName = empName;
@@ -32,10 +32,10 @@ public class Employee extends ValueObject{
     public void setEmpName(String empName) {
         this.empName = empName;
     }
-    public Department getDeptId() {
+    public DepartmentVo getDeptId() {
         return deptId;
     }
-    public void setDeptId(Department deptId) {
+    public void setDeptId(DepartmentVo deptId) {
         this.deptId = deptId;
     }
     @Override
