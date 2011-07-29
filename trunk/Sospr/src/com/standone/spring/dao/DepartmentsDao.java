@@ -12,15 +12,11 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import com.standone.parents.BaseDao;
 import com.standone.spring.vo.DepartmentVo;
 
 
-public class DepartmentsDao {
-	private JdbcTemplate template;
-
-	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
-	}
+public class DepartmentsDao extends BaseDao{
 	public DepartmentVo getDepartment(Long id){
 		String sql="SELECT DEPT_ID,DEPT_NAME FROM PUBLIC.DEPARTMENT WHERE DEPT_ID=? ";
 		RowMapper row=new RowMapper() {

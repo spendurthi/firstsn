@@ -8,14 +8,14 @@ import com.standone.parents.ValueObject;
 public class DepartmentVo extends ValueObject {
     private int deptId;
     private String deptName;
-    private Set<Employee> employees=new HashSet<Employee>(); 
-    public void addEmployee(Employee emp){
+    private Set<EmployeeVo> employees=new HashSet<EmployeeVo>(); 
+    public void addEmployee(EmployeeVo emp){
        getEmployees().add(emp);
     }
-    public Set<Employee> getEmployees() {
+    public Set<EmployeeVo> getEmployees() {
         return employees;
     }
-    public void setEmployees(Set<Employee> employees) {
+    public void setEmployees(Set<EmployeeVo> employees) {
         this.employees = employees;
     }
     public int getDeptId() {
