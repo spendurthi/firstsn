@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script language="Javascript">
 function setMode(id,mode){
 	document.frmDept.action="department.htm?methodName="+mode;
@@ -16,7 +17,7 @@ function customButton(mode){
 <title>Departments</title>
 </head>
 <body>
-<form method="POST" action="department.htm?methodName=addDepartment" name="frmDept">
+<form:form method="POST" action="department.htm" name="frmDept" commandName="departmentVo">
 
 <table>
 <tr>
@@ -26,6 +27,7 @@ function customButton(mode){
 </td>
 </tr>
 <tr>
+
 <td><fmt:message key="deptName" /> </td>
 <td><input type="text" name="deptName" value="${deptVo.deptName}"> </td>
 </tr>
@@ -39,7 +41,7 @@ function customButton(mode){
 </c:if>
 </tr>
 </table>
-</form>
+</form:form>
 <table>
 <tr>
 <th><fmt:message key="deptId" /></th>

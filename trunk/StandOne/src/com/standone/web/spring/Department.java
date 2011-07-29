@@ -5,13 +5,15 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.standone.spring.vo.DepartmentVo;
 import com.standone.web.manager.DepartmentManager;
+import com.standone.web.manager.DropDownManager;
 
-public class Department extends MultiActionController {
+public class Department extends MultiAction {
 	private String viewName;
 	private String valueName;
 	public void setViewName(String viewName) {
@@ -26,7 +28,17 @@ public class Department extends MultiActionController {
 	}
 	public ModelAndView listDepartments(HttpServletRequest request, HttpServletResponse response){
 		List<DepartmentVo> listOfDepts=manager.getAll();
-		return new ModelAndView(viewName,valueName,listOfDepts);
+		ModelAndView mav=new ModelAndView(viewName);
+		mav.addObject(valueName, listOfDepts);
+		
+		ApplicationContext springContext = (ApplicationContext)request.getSession().getServletContext().getAttribute(
+				WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+		if (ddManager==null){
+			ddManager = (DropDownManager)springContext.getBean("spDdManager");
+		}
+		
+		mav.addObject("deptDD", ddManager.getDepartmentsDD());
+		return mav;
 	}
 	public ModelAndView addDepartment(HttpServletRequest request, HttpServletResponse response,DepartmentVo departmentVo){
 		manager.addDepartment(departmentVo);
@@ -46,5 +58,9 @@ public class Department extends MultiActionController {
 	public ModelAndView updateMode(HttpServletRequest request, HttpServletResponse response,DepartmentVo departmentVo){
 		DepartmentVo vo=manager.getDepartment((long)departmentVo.getDeptId());
 		return new ModelAndView(viewName,"deptVo",vo);
+	}
+	@Override
+	protected void flushDD() {
+		ddManager.flushDepartments();
 	}
 }
