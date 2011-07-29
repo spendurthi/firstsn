@@ -2,22 +2,22 @@ package com.standone.spring.vo;
 
 import com.standone.parents.ValueObject;
 
-public class Employee extends ValueObject{
+public class EmployeeVo extends ValueObject{
     private int empId;
     private String empName;
-    private DepartmentVo deptId;
+    private int deptId;
     public int getEmpId() {
         return empId;
     }
-    public Employee() {
+    public EmployeeVo() {
         super();
     }
-    public Employee(String empName, DepartmentVo deptId) {
+    public EmployeeVo(String empName, int deptId) {
         super();
         this.empName = empName;
         this.deptId = deptId;
     }
-    public Employee(int empId, String empName, DepartmentVo deptId) {
+    public EmployeeVo(int empId, String empName, int deptId) {
         super();
         this.empId = empId;
         this.empName = empName;
@@ -32,15 +32,15 @@ public class Employee extends ValueObject{
     public void setEmpName(String empName) {
         this.empName = empName;
     }
-    public DepartmentVo getDeptId() {
+    public int getDeptId() {
         return deptId;
     }
-    public void setDeptId(DepartmentVo deptId) {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
     @Override
     public String toString() {
-        String s="Emp Id :"+empId+" Employee Name: "+empName+" Department: "+deptId.getDeptName();
+        String s="Emp Id :"+empId+" Employee Name: "+empName+" Department: "+deptId;
         return s;
     }
 }
