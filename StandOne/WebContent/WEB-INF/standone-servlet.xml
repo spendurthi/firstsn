@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context 
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver" p:basename="views" />
     
@@ -14,7 +19,19 @@
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" p:definitions="/WEB-INF/tiles-defs.xml" />
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
        <property name="basename"><value>labels</value></property>  
-	</bean>  
+	</bean> 
+	<bean id="ddVo" class="com.standone.spring.vo.DropDownVo"  scope="session" >
+	 	<aop:scoped-proxy/>
+	</bean> 
+	<bean id="spDdManager" class="com.standone.web.manager.DropDownManager">
+		<property name="departmentManager" ref="spDeptMgr"/>
+		<property name="designationManager" ref="spDesigMgr"/>
+		<property name="dropDownVo" ref="ddVo"/>
+	</bean>
+	<bean name="/welcome.htm" class="com.standone.WelcomeController" >
+		<property name="ddMgr" ref="spDdManager"/>
+	</bean>
+	<bean name="/organization.htm" class="com.standone.web.spring.Organization"/>
 	
 	<bean id="paramResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
 		<property name="paramName"><value>methodName</value></property>
@@ -29,6 +46,8 @@
     <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+		
     
 	<bean id="spDepartmentDao" class="com.standone.spring.dao.DepartmentsDao">
 		<property name="template" ref="template"/>
@@ -36,15 +55,37 @@
 	<bean id="spDeptMgr" class="com.standone.web.manager.DepartmentManager">
 		<property name="dao" ref="spDepartmentDao"/>
 	</bean>
-	
-	<bean name="/welcome.htm" class="com.standone.WelcomeController"/>
-	<bean name="/organization.htm" class="com.standone.web.spring.Organization"/>
-	
 	<bean name="/department.htm" class="com.standone.web.spring.Department" >
 		<property name="methodNameResolver" ref="paramResolver"/>
 		<property name="manager" ref="spDeptMgr"/>
 		<property name="viewName" value="department"/>
 		<property name="valueName" value="listOfDepts"/>
+		<property name="ddManager" ref="spDdManager"/>
+	</bean>
+	<bean id="spDesignationDao" class="com.standone.spring.dao.DesignationsDao">
+		<property name="template" ref="template"/>
+	</bean>
+	<bean id="spDesigMgr" class="com.standone.web.manager.DesignationManager">
+		<property name="dao" ref="spDesignationDao"/>
+	</bean>
+	<bean name="/designation.htm" class="com.standone.web.spring.Designations" >
+		<property name="methodNameResolver" ref="paramResolver"/>
+		<property name="manager" ref="spDesigMgr"/>
+		<property name="viewName" value="designation"/>
+		<property name="valueName" value="listOfDesigs"/>
+	</bean>
+	<bean id="spEmployeeDao" class="com.standone.spring.dao.EmployeeDao">
+		<property name="template" ref="template"/>
+	</bean>
+	<bean id="spEmpMgr" class="com.standone.web.manager.EmployeeManager">
+		<property name="dao" ref="spEmployeeDao"/>
+	</bean>
+	<bean id="empBean" class="com.standone.spring.vo.EmployeeVo" scope="prototype" />
+	<bean name="/employee.htm" class="com.standone.web.spring.Employee" >
+		<property name="methodNameResolver" ref="paramResolver"/>
+		<property name="manager" ref="spEmpMgr"/>
+		<property name="viewName" value="employee"/>
+		<property name="valueName" value="listOfEmps"/>
 	</bean>
 
 </beans>

@@ -27,5 +27,13 @@
       <put-attribute name="title"  value="Departments"/>
       <put-attribute name="body"   value="/jsp/department/departments.jsp"/>      
   </definition>
+  <definition name="designation" extends="baseLayout">
+      <put-attribute name="title"  value="Designations"/>
+      <put-attribute name="body"   value="/jsp/designation/designations.jsp"/>      
+  </definition>
+  <definition name="employee" extends="baseLayout">
+      <put-attribute name="title"  value="Employees"/>
+      <put-attribute name="body"   value="/jsp/employee/employees.jsp"/>      
+  </definition>
   
 </tiles-definitions>
