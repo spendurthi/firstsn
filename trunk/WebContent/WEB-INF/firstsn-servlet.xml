@@ -5,8 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean name="/welcome.htm" class="com.firstsn.WelcomeController"/>
-	<bean name="/organization.htm" class="com.firstsn.web.spring.Organization"/>
+	
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver" p:basename="views" />
     
@@ -16,5 +15,36 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
        <property name="basename"><value>labels</value></property>  
 	</bean>  
+	
+	<bean id="paramResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName"><value>methodName</value></property>
+	</bean>
+	
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:hsql://localhost"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+    <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+    
+	<bean id="spDepartmentDao" class="com.standone.app.spring.dept.dao.DepartmentsDao">
+		<property name="template" ref="template"/>
+	</bean>
+	<bean id="spDeptMgr" class="com.standone.app.manager.DepartmentManager">
+		<property name="dao" ref="spDepartmentDao"/>
+	</bean>
+	
+	<bean name="/welcome.htm" class="com.firstsn.WelcomeController"/>
+	<bean name="/organization.htm" class="com.firstsn.web.spring.Organization"/>
+	
+	<bean name="/department.htm" class="com.firstsn.web.spring.Department" >
+	<property name="methodNameResolver" >
+		<ref bean="paramResolver"/>
+	</property>
+	<property name="manager" ref="spDeptMgr"/>
+	</bean>
 
 </beans>

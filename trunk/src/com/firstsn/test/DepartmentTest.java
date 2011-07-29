@@ -9,42 +9,42 @@ import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import com.firstsn.admin.util.HibernateUtil;
-import com.firstsn.admin.vo.Department;
+import com.firstsn.admin.vo.DepartmentVo;
 import com.firstsn.admin.vo.Employee;
 
 public class DepartmentTest {
     public static void addEmployees(Set<com.firstsn.admin.vo.Employee> empList,int deptNo){
         Session session = com.firstsn.admin.util.HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
-        Department dept=viewDepartment(deptNo);    
+        DepartmentVo dept=viewDepartment(deptNo);    
         dept.setEmployees(empList);
         session.update(dept);   
         transaction.commit();
     }
     
-    public static Department addDepartment(){
+    public static DepartmentVo addDepartment(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
-        Department dept=new Department(1,"ADMIN");
+        DepartmentVo dept=new DepartmentVo(1,"ADMIN");
         session.save(dept);
         transaction.commit();
         return dept;
     }
-    public static Department viewDepartment(int deptId){
+    public static DepartmentVo viewDepartment(int deptId){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Department dept=(Department)session.get(Department.class, new Integer(deptId));
+        DepartmentVo dept=(DepartmentVo)session.get(DepartmentVo.class, new Integer(deptId));
         return dept;
     }
-    public static List<Department> viewAll(){
+    public static List<DepartmentVo> viewAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query=session.createQuery("FROM Department");
-        List<Department> depts=query.list();
+        List<DepartmentVo> depts=query.list();
         return depts;
     }
-    public static Department update(Department dept){
+    public static DepartmentVo update(DepartmentVo dept){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
-        Department lDept=(Department)session.get(Department.class, new Integer(dept.getDeptId()));
+        DepartmentVo lDept=(DepartmentVo)session.get(DepartmentVo.class, new Integer(dept.getDeptId()));
         lDept.setDeptId(dept.getDeptId());
         lDept.setDeptName(dept.getDeptName());
         session.update(lDept);
