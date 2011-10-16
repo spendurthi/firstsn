@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 import com.standone.web.manager.DropDownManager;
 
-public class WelcomeController extends AbstractController {
+public class WelcomeController extends AbstractController  {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private DropDownManager ddMgr;
@@ -25,8 +25,8 @@ public class WelcomeController extends AbstractController {
 	@Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		ddMgr.prepareDropDowns();
-        return new ModelAndView("welcome");
+			ddMgr.prepareDropDowns();
+	        return new ModelAndView("welcome");
     }
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
@@ -34,5 +34,6 @@ public class WelcomeController extends AbstractController {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
