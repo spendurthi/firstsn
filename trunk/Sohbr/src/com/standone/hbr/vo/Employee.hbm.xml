@@ -8,6 +8,6 @@
             <generator class="increment" />
         </id>
         <property name="empName" type="string" not-null="true" length="25" column="EMP_NAME" />
-        <many-to-one name="deptId" column="DEPT_ID" class="com.standone.hbr.vo.Department" not-null="true" />
+        <many-to-one name="deptId" column="DEPT_ID" class="com.standone.hbr.vo.DepartmentVo" not-null="true" />
     </class>
 </hibernate-mapping>

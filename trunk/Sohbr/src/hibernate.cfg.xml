@@ -12,6 +12,7 @@
   <property name="show_sql">true</property>
   <mapping resource="com/standone/hbr/vo/Department.hbm.xml"/>
   <mapping resource="com/standone/hbr/vo/Employee.hbm.xml"/>
-  <mapping resource="com/standone/hbr/vo/Organization.hbm.xml"/>
+  <mapping resource="com/standone/hbr/vo/Organization.hbm.xml" />
+  <mapping resource="com/standone/hbr/vo/User.hbm.xml" />
  </session-factory>
 </hibernate-configuration>

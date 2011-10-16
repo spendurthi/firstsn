@@ -2,13 +2,12 @@ package com.standone.hbr.dao;
 
 import java.util.Collection;
 
-import m.standone.hbr.vo.Organization;
-
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import com.standone.hbr.parents.ValueObject;
 import com.standone.hbr.util.HibernateUtil;
+import com.standone.hbr.vo.Organization;
 
 public class OrganizationDao implements Crud {
 
