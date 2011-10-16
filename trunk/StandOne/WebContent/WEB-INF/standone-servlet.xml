@@ -87,5 +87,15 @@
 		<property name="viewName" value="employee"/>
 		<property name="valueName" value="listOfEmps"/>
 	</bean>
-
+	
+	<bean id="loginDao" class="com.standone.hbr.dao.LoginDao" />
+	<bean id="loginManager" class="com.standone.web.manager.LoginManager">
+		<property name="loginDao" ref="loginDao"/>
+	</bean>
+	<bean id="userValids" class="com.standone.validations.UserValidation" />
+	<bean name="/login.htm" class="com.standone.web.spring.Login" >
+		<property name="loginManager" ref="loginManager"/>
+		<property name="validations" ref="userValids"/>
+	</bean>
+	
 </beans>
