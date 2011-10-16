@@ -3,7 +3,7 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.standone.hbr.vo.Department" table="DEPARTMENT">
+    <class name="com.standone.hbr.vo.DepartmentVo" table="DEPARTMENT">
         <id name="deptId" type="int" column="DEPT_ID">
             <generator class="increment" />
         </id>
