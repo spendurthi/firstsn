@@ -34,12 +34,12 @@ public class Designations extends MultiAction {
 		List<DesignationVo> listOfDesigs=manager.select();	
 		return new ModelAndView(viewName,valueName,listOfDesigs);
 	}
-	public ModelAndView updateEmployee(HttpServletRequest request, HttpServletResponse response,DesignationVo designationVo){
+	public ModelAndView updateDesignation(HttpServletRequest request, HttpServletResponse response,DesignationVo designationVo){
 		manager.update(designationVo);
 		List<DesignationVo> listOfDesigs=manager.select();	
 		return new ModelAndView(viewName,valueName,listOfDesigs);
 	}
-	public ModelAndView deleteEmployee(HttpServletRequest request, HttpServletResponse response,DesignationVo designationVo){
+	public ModelAndView deleteDesignation(HttpServletRequest request, HttpServletResponse response,DesignationVo designationVo){
 		manager.delete(designationVo);
 		List<DesignationVo> listOfDesigs=manager.select();		
 		return new ModelAndView(viewName,valueName,listOfDesigs);
