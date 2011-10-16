@@ -14,7 +14,7 @@
       <put-attribute name="footer"   value="/layout/footer.jsp"/>
   </definition>
   
-  <definition name="welcome" extends="baseLayout">
+  <definition name="welcome" template="/layout/layout.jsp">
       <put-attribute name="title"  value="Welcome to StandOne"/>
       <put-attribute name="body"   value="/jsp/welcome.jsp"/>      
   </definition>
