@@ -4,23 +4,23 @@ import java.sql.Blob;
 
 import com.standone.parents.ValueObject;
 
-public class Organization extends ValueObject {
+public class OrganizationVo extends ValueObject {
 	private int orgId;
 	private String orgName;
 	private Blob orgLogo;
-	public Organization(){
+	public OrganizationVo(){
 		super();
 	}
-	public Organization(int orgId) {
+	public OrganizationVo(int orgId) {
 		super();
 		this.orgId = orgId;
 	}
-	public Organization(int orgId, String orgName) {
+	public OrganizationVo(int orgId, String orgName) {
 		super();
 		this.orgId = orgId;
 		this.orgName = orgName;
 	}
-	public Organization(int orgId, String orgName, Blob orgLogo) {
+	public OrganizationVo(int orgId, String orgName, Blob orgLogo) {
 		super();
 		this.orgId = orgId;
 		this.orgName = orgName;

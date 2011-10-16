@@ -70,7 +70,7 @@ public class DesignationsDao extends BaseDao implements Crud {
 
 	@Override
 	public ValueObject select(int id) {
-		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM PUBLIC.DESIGNATIONS WHERE DEPT_ID=? ";
+		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM PUBLIC.DESIGNATIONS WHERE DESIG_ID=? ";
 		RowMapper row=new RowMapper() {
 			@Override
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
