@@ -1,20 +1,17 @@
 package com.standone.test;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
-import m.standone.hbr.vo.DepartmentVo;
-import m.standone.hbr.vo.Employee;
 
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import com.standone.hbr.util.HibernateUtil;
+import com.standone.hbr.vo.DepartmentVo;
 
 public class DepartmentTest {
-    public static void addEmployees(Set<m.standone.hbr.vo.Employee> empList,int deptNo){
+    public static void addEmployees(Set<com.standone.hbr.vo.Employee> empList,int deptNo){
         Session session = com.standone.hbr.util.HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
         DepartmentVo dept=viewDepartment(deptNo);    

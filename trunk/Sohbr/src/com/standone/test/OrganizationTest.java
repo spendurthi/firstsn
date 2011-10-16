@@ -1,11 +1,10 @@
 package com.standone.test;
 
-import m.standone.hbr.vo.Organization;
-
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import com.standone.hbr.util.HibernateUtil;
+import com.standone.hbr.vo.Organization;
 
 public class OrganizationTest {
 	public static Organization addOrganization(Organization org){

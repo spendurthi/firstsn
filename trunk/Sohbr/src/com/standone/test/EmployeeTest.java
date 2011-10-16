@@ -2,13 +2,12 @@ package com.standone.test;
 
 import java.util.List;
 
-import m.standone.hbr.vo.Employee;
-
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import com.standone.hbr.util.HibernateUtil;
+import com.standone.hbr.vo.Employee;
 
 public class EmployeeTest {
 
