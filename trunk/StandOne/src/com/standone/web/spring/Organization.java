@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 
 public class Organization extends org.springframework.web.servlet.mvc.SimpleFormController  {
-	private m.standone.hbr.vo.Organization org;
-	public m.standone.hbr.vo.Organization getOrg() {
+	private com.standone.hbr.vo.Organization org;
+	public com.standone.hbr.vo.Organization getOrg() {
 		return org;
 	}
-	public void setOrg(m.standone.hbr.vo.Organization org) {
+	public void setOrg(com.standone.hbr.vo.Organization org) {
 		this.org = org;
 	}
 	private String orgName;
