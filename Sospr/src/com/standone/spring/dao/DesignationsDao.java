@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -21,12 +22,12 @@ public class DesignationsDao extends BaseDao implements Crud {
 	@Override
 	public int delete(ValueObject vo) {
 		final DesignationVo lVo=(DesignationVo)vo;
-		final String sql="DELETE FROM PUBLIC.DESIGNATIONS WHERE DESIG_ID=?";
+		final String sql="DELETE FROM DESIGNATIONS WHERE DESIG_ID=?";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getDesigId());
 				return ps;
 			}
@@ -37,12 +38,12 @@ public class DesignationsDao extends BaseDao implements Crud {
 	@Override
 	public int save(ValueObject vo) {
 		final DesignationVo lVo=(DesignationVo)vo;
-		final String sql="INSERT INTO PUBLIC.DESIGNATIONS (DESIG_ID, DESIG_NAME, DEPT_ID) VALUES (?,?,?)";
+		final String sql="INSERT INTO DESIGNATIONS (DESIG_ID, DESIG_NAME, DEPT_ID) VALUES (?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getDesigId());
 				ps.setString(2, lVo.getDesigName());
 				ps.setInt(3, lVo.getDeptId());
@@ -54,7 +55,7 @@ public class DesignationsDao extends BaseDao implements Crud {
 
 	@Override
 	public List<ValueObject> select() {
-		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM PUBLIC.DESIGNATIONS ";
+		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM DESIGNATIONS ";
 		RowMapper row=new RowMapper() {
 			@Override
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -70,7 +71,7 @@ public class DesignationsDao extends BaseDao implements Crud {
 
 	@Override
 	public ValueObject select(int id) {
-		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM PUBLIC.DESIGNATIONS WHERE DESIG_ID=? ";
+		final String sql="SELECT DESIG_ID,DESIG_NAME,DEPT_ID FROM DESIGNATIONS WHERE DESIG_ID=? ";
 		RowMapper row=new RowMapper() {
 			@Override
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -93,12 +94,12 @@ public class DesignationsDao extends BaseDao implements Crud {
 	@Override
 	public int update(ValueObject vo) {
 		final DesignationVo lVo=(DesignationVo)vo;
-		final String sql="UPDATE PUBLIC.DESIGNATIONS SET DESIG_ID = ?,	DESIG_NAME = ?,DEPT_ID = ? WHERE DESIG_ID = ?";
+		final String sql="UPDATE DESIGNATIONS SET DESIG_ID = ?,	DESIG_NAME = ?,DEPT_ID = ? WHERE DESIG_ID = ?";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getDesigId());
 				ps.setString(2, lVo.getDesigName());
 				ps.setInt(3, lVo.getDeptId());
