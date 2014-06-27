@@ -2,7 +2,6 @@ package com.standone.web.manager;
 
 import com.standone.hbr.dao.LoginDao;
 import com.standone.hbr.vo.User;
-import com.standone.validations.UserValidation;
 
 public class LoginManager {
 	private LoginDao loginDao;
