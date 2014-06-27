@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -20,13 +21,13 @@ public class EmployeeDao extends BaseDao implements Crud {
 
 	@Override
 	public int delete(ValueObject vo) {
-		final String sql="DELETE FROM PUBLIC.EMPLOYEE WHERE EMP_ID=?";
+		final String sql="DELETE FROM EMPLOYEE WHERE EMP_ID=?";
 		final EmployeeVo lVo=new EmployeeVo();
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getEmpId());
 				return ps;
 			}
@@ -36,13 +37,13 @@ public class EmployeeDao extends BaseDao implements Crud {
 
 	@Override
 	public int save(ValueObject vo) {
-		final String sql="INSERT INTO PUBLIC.EMPLOYEE (EMP_ID, EMP_NAME,DEPT_ID) VALUES (?,?,?)";
+		final String sql="INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME,DEPT_ID) VALUES (?,?,?)";
 		final EmployeeVo lVo=(EmployeeVo)vo;
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getEmpId());
 				ps.setString(2, lVo.getEmpName());
 				ps.setInt(3, lVo.getDeptId());
@@ -54,7 +55,7 @@ public class EmployeeDao extends BaseDao implements Crud {
 
 	@Override
 	public List select() {
-		final String sql="SELECT EMP_ID, EMP_NAME,DEPT_ID FROM PUBLIC.EMPLOYEE ";
+		final String sql="SELECT EMP_ID, EMP_NAME,DEPT_ID FROM EMPLOYEE ";
 		RowMapper row=new RowMapper() {
 			@Override
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -70,7 +71,7 @@ public class EmployeeDao extends BaseDao implements Crud {
 
 	@Override
 	public ValueObject select(int id) {
-		final String sql="SELECT EMP_ID, EMP_NAME,DEPT_ID FROM PUBLIC.EMPLOYEE WHERE EMP_ID=? ";
+		final String sql="SELECT EMP_ID, EMP_NAME,DEPT_ID FROM EMPLOYEE WHERE EMP_ID=? ";
 		RowMapper row=new RowMapper() {
 			@Override
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -93,12 +94,12 @@ public class EmployeeDao extends BaseDao implements Crud {
 	@Override
 	public int update(ValueObject vo) {
 		final EmployeeVo lVo=(EmployeeVo)vo;
-		final String sql="UPDATE PUBLIC.EMPLOYEE SET EMP_ID = ?,	EMP_NAME = ?,DEPT_ID = ? WHERE EMP_ID = ?";
+		final String sql="UPDATE EMPLOYEE SET EMP_ID = ?,	EMP_NAME = ?,DEPT_ID = ? WHERE EMP_ID = ?";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		int i=template.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql);
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, lVo.getEmpId());
 				ps.setString(2, lVo.getEmpName());
 				ps.setInt(3, lVo.getDeptId());
